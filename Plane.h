@@ -11,13 +11,13 @@ class Plane : public Object {
 
         Material material = Material(0.3, 1.0, 0.5f, 6);
 
-        Plane(Vec3f n, 
+        Plane(Vec3f n,
             float d, 
-            Vec3f sc, 
-            float trans, 
-            Vec3f ec = BLACK,
-            Material material = Material(0.3, 1.0, 0.5f, 6)) 
-            : normal(n.normalize()), distance(d), Object(sc, trans, ec, material) {}
+            Vec3f surfaceColor,
+            Vec3f emissionColor = BLACK,
+            Material material = Material(0.3, 1.0, 0.5f, 6),
+            float transparency = 0)
+            : normal(n.normalize()), distance(d), Object(surfaceColor, emissionColor, material, transparency) {}
 
         bool intersect(Ray& ray, float& t1, float& t2) const {
             if (normal.dot(ray.direction) >= 0) return false; // O produto escalar da interseção é menor que zero
@@ -26,10 +26,6 @@ class Plane : public Object {
             t1 = o_d / cosa;
             t2 = t1;
             return true;
-        }
-
-        Vec3f getTextureColor(Vec3f& phit) const {
-            return WHITE;
         }
 
         Vec3f nhit(Vec3f& phit) const {

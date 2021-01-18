@@ -1,11 +1,3 @@
-//
-//  GLVector.h
-//  raytracing
-//
-//  Created by sunchenge on 2018/12/28.
-//  Copyright © 2018 sunchenge. All rights reserved.
-//
-
 #ifndef GLVector_h
 #define GLVector_h
 
